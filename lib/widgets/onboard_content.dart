@@ -18,11 +18,11 @@ class OnboardContent extends StatelessWidget {
       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
         GestureDetector(
           onTap: () => Get.offAllNamed(AppRoutes.signup),
-          child: Text('\nSkip',
+          child: Text('\nSkip ',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'roboto',
-                  fontSize: 15.sp,
+                  fontSize: 16.sp,
                   color: AppColors.primaryColor)),
         )
       ]),

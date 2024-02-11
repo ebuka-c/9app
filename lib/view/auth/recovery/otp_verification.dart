@@ -8,25 +8,18 @@ import '../../../routes/names.dart';
 import '../../../values/colors.dart';
 import '../../../widgets/custom_button.dart';
 
-class OTPVerification extends StatefulWidget {
+class OTPVerification extends StatelessWidget {
   const OTPVerification({super.key});
-
-  @override
-  State<OTPVerification> createState() => _OTPVerificationState();
-}
-
-class _OTPVerificationState extends State<OTPVerification> {
-  String phoneNumber = '+2349081334499';
-  String countdown = '26';
-
   @override
   Widget build(BuildContext context) {
+    String countdown = '26';
+    String phoneNumber = '+2349081334499';
+
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
-            leading: IconButton(
-                onPressed: () => Get.back(),
-                icon: const Icon(Icons.arrow_back)),
+            leading: GestureDetector(
+                onTap: () => Get.back(), child: const Icon(Icons.arrow_back)),
             title: const Text('OTP Verification',
                 style: TextStyle(fontFamily: 'roboto'))),
         body: SingleChildScrollView(
@@ -64,25 +57,20 @@ class _OTPVerificationState extends State<OTPVerification> {
                           keyboardType: TextInputType.number,
                           appContext: context,
                           length: 4,
-                          onCompleted: (value) {
-                            setState(() {
-                              // otpGotten = value;
-                            });
-                          },
+                          onCompleted: (value) {},
                           blinkWhenObscuring: true,
                           animationType: AnimationType.fade,
                           pinTheme: PinTheme(
-                            activeFillColor: AppColors.primaryColor,
-                            fieldWidth: w * 0.17,
-                            selectedFillColor: AppColors.fillColor,
-                            inactiveFillColor: Colors.grey,
-                            shape: PinCodeFieldShape.box,
-                            borderRadius: BorderRadius.circular(15),
-                            fieldHeight: 50,
-                            inactiveColor: Colors.grey,
-                            activeColor: AppColors.primaryColor,
-                            selectedColor: Colors.brown,
-                          )),
+                              activeFillColor: AppColors.primaryColor,
+                              fieldWidth: w * 0.17,
+                              selectedFillColor: AppColors.fillColor,
+                              inactiveFillColor: Colors.grey,
+                              shape: PinCodeFieldShape.box,
+                              borderRadius: BorderRadius.circular(15),
+                              fieldHeight: 50,
+                              inactiveColor: Colors.grey,
+                              activeColor: AppColors.primaryColor,
+                              selectedColor: Colors.brown)),
                       Gap(50.h),
                       Text('Resend Code in $countdown s',
                           textAlign: TextAlign.center,
@@ -92,7 +80,7 @@ class _OTPVerificationState extends State<OTPVerification> {
                               fontSize: 16.5.sp)),
                       Gap(50.h),
                       GestureDetector(
-                          onTap: () => Get.offAllNamed(AppRoutes.createNewPSWD),
+                          onTap: () => Get.toNamed(AppRoutes.createNewPSWD),
                           child: CustomButton(
                               height: 55.h,
                               width: w * w,

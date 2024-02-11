@@ -7,9 +7,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text('Dashboard'),
-      ),
+          automaticallyImplyLeading: false, title: const Text('Dashboard'))
     );
   }
 }

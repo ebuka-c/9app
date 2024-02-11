@@ -5,25 +5,13 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../../../values/colors.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/formfield_widget.dart';
 
-class NewPswd extends StatefulWidget {
+class NewPswd extends GetView<AuthController> {
   const NewPswd({super.key});
-
-  @override
-  State<NewPswd> createState() => _NewPswdState();
-}
-
-class _NewPswdState extends State<NewPswd> {
-  var passwordController = TextEditingController();
-  var confirmPasswordController = TextEditingController();
-
-  String password = '';
-
-  bool obscureText = true;
-  bool obscureTextConfirm = true;
 
   @override
   Widget build(BuildContext context) {
@@ -67,27 +55,44 @@ class _NewPswdState extends State<NewPswd> {
                                   fontSize: 24.sp,
                                   fontFamily: 'roboto')),
                           Gap(20.h),
-                          FormFieldWidget(
-                              controllerType: passwordController,
-                              prefixIcon: Iconsax.lock,
-                              labelText: 'Password'),
+                          Obx(
+                            () => FormFieldWidget(
+                                controllerType:
+                                    controller.recoveryPswdController,
+                                prefixIcon: Iconsax.lock,
+                                labelText: 'Password',
+                                suffix: GestureDetector(
+                                    onTap: () {
+                                      controller.recoveryObscure.value =
+                                          !controller.recoveryObscure.value;
+                                    },
+                                    child: Icon(
+                                        controller.recoveryObscure.value
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.grey)),
+                                obscureText: controller.recoveryObscure.value),
+                          ),
                           Gap(10.h),
-                          FormFieldWidget(
-                              controllerType: confirmPasswordController,
-                              prefixIcon: Iconsax.lock,
-                              labelText: 'Confirm Password',
-                              suffix: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      obscureTextConfirm = !obscureTextConfirm;
-                                    });
-                                  },
-                                  child: Icon(
-                                      obscureText
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color: Colors.grey)),
-                              obscureText: obscureTextConfirm),
+                          Obx(
+                            () => FormFieldWidget(
+                                controllerType: controller.recoveryPswdConfirm,
+                                prefixIcon: Iconsax.lock,
+                                labelText: 'Confirm Password',
+                                suffix: GestureDetector(
+                                    onTap: () {
+                                      controller.recoveryConfirmObscure.value =
+                                          !controller
+                                              .recoveryConfirmObscure.value;
+                                    },
+                                    child: Icon(
+                                        controller.recoveryConfirmObscure.value
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.grey)),
+                                obscureText:
+                                    controller.recoveryConfirmObscure.value),
+                          ),
                           Gap(40.h),
                           GestureDetector(
                             onTap: () => Get.toNamed(AppRoutes.dashboard),

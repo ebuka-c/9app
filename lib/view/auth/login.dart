@@ -7,25 +7,12 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../controllers/auth_controller.dart';
 import '../../widgets/formfield_widget.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends GetView<AuthController> {
   const LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<LoginScreen> {
-  var emailController = TextEditingController();
-  var nameController = TextEditingController();
-  var userController = TextEditingController();
-  var passwordController = TextEditingController();
-
-  String password = '';
-
-  bool rememberMe = false;
-  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -61,51 +48,53 @@ class _SignUpScreenState extends State<LoginScreen> {
                               fontFamily: 'roboto')),
                       Gap(20.h),
                       FormFieldWidget(
-                          controllerType: emailController,
+                          controllerType: controller.emailController,
                           prefixIcon: Icons.email_outlined,
                           keyboardType: TextInputType.emailAddress,
                           labelText: 'Email'),
                       Column(children: [
-                        FormFieldWidget(
-                            controllerType: passwordController,
-                            prefixIcon: Iconsax.lock,
-                            labelText: 'Password',
-                            suffix: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    obscureText = !obscureText;
-                                  });
-                                },
-                                child: Icon(
-                                    obscureText
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                    color: Colors.grey)),
-                            obscureText: obscureText),
+                        Obx(
+                          () => FormFieldWidget(
+                              controllerType:
+                                  controller.signInPasswordController,
+                              prefixIcon: Iconsax.lock,
+                              labelText: 'Password',
+                              suffix: GestureDetector(
+                                  onTap: () {
+                                    controller.signInObscuretext.value =
+                                        !controller.signInObscuretext.value;
+                                  },
+                                  child: Icon(
+                                      controller.signInObscuretext.value
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey)),
+                              obscureText: controller.signInObscuretext.value),
+                        ),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               GestureDetector(
                                   onTap: () =>
-                                      Get.offAllNamed(AppRoutes.forgotPSWD),
+                                      Get.toNamed(AppRoutes.forgotPSWD),
                                   child: Text('Forgot Password?',
                                       style: TextStyle(
                                           fontFamily: 'roboto',
                                           fontWeight: FontWeight.w500,
                                           color: AppColors.primaryColor,
-                                          fontSize: 13.sp)))
+                                          fontSize: 13.5.sp)))
                             ])
                       ]),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Checkbox(
-                                value: rememberMe,
-                                onChanged: (value) {
-                                  setState(() {
-                                    rememberMe = value!;
-                                  });
-                                }),
+                            Obx(
+                              () => Checkbox(
+                                  value: controller.rememberMe.value,
+                                  onChanged: (value) {
+                                    controller.rememberMe.value = value!;
+                                  }),
+                            ),
                             Text('Remeber Me',
                                 style: TextStyle(
                                     fontFamily: 'roboto', fontSize: 15.sp))
@@ -134,7 +123,7 @@ class _SignUpScreenState extends State<LoginScreen> {
                                   fontFamily: 'roboto', fontSize: 15.sp),
                             ),
                             GestureDetector(
-                                onTap: () => Get.offAllNamed(AppRoutes.signup),
+                                onTap: () => Get.toNamed(AppRoutes.signup),
                                 child: Text('Sign up',
                                     style: TextStyle(
                                         fontFamily: 'roboto',

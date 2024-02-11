@@ -1,3 +1,4 @@
+import 'package:_9app/controllers/auth_controller.dart';
 import 'package:_9app/routes/names.dart';
 import 'package:_9app/values/colors.dart';
 import 'package:_9app/widgets/custom_button.dart';
@@ -9,23 +10,9 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../widgets/formfield_widget.dart';
 
-class SignUpScreen extends StatefulWidget {
+class SignUpScreen extends GetView<AuthController> {
   const SignUpScreen({super.key});
 
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
-  var emailController = TextEditingController();
-  var nameController = TextEditingController();
-  var userController = TextEditingController();
-  var passwordController = TextEditingController();
-
-  String password = '';
-
-  bool rememberMe = false;
-  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -35,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Center(
                 child: Padding(
                     padding:
-                        EdgeInsets.symmetric(vertical: 55.sp, horizontal: 20.w),
+                        EdgeInsets.symmetric(vertical: 70.sp, horizontal: 20.w),
                     child: Column(children: [
                       Container(
                           height: 130.h,
@@ -61,51 +48,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               fontFamily: 'roboto')),
                       Gap(20.h),
                       FormFieldWidget(
-                          controllerType: nameController,
+                          controllerType: controller.nameController,
                           prefixIcon: Icons.person_2_outlined,
                           keyboardType: TextInputType.name,
                           labelText: 'Full Name'),
                       FormFieldWidget(
-                          controllerType: userController,
+                          controllerType: controller.userController,
                           prefixIcon: Iconsax.profile_circle4,
                           keyboardType: TextInputType.name,
                           labelText: 'User Name'),
                       FormFieldWidget(
-                          controllerType: emailController,
+                          controllerType: controller.emailController,
                           prefixIcon: Icons.email_outlined,
                           keyboardType: TextInputType.emailAddress,
                           labelText: 'Email'),
-                      FormFieldWidget(
-                          controllerType: passwordController,
-                          prefixIcon: Iconsax.lock,
-                          labelText: 'Password',
-                          suffix: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  obscureText = !obscureText;
-                                });
-                              },
-                              child: Icon(
-                                  obscureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Colors.grey)),
-                          obscureText: obscureText),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Checkbox(
-                                value: rememberMe,
-                                onChanged: (value) {
-                                  setState(() {
-                                    rememberMe = value!;
-                                  });
-                                }),
-                            Text('Remeber Me',
-                                style: TextStyle(
-                                    fontFamily: 'roboto', fontSize: 15.sp)),
-                          ]),
-                      Gap(20.h),
+                      Obx(
+                        () => FormFieldWidget(
+                            controllerType: controller.signUpPasswordController,
+                            prefixIcon: Iconsax.lock,
+                            labelText: 'Password',
+                            suffix: GestureDetector(
+                                onTap: () {
+                                  controller.signUpObscuretext.value =
+                                      !controller.signUpObscuretext.value;
+                                },
+                                child: Icon(
+                                    controller.signUpObscuretext.value
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: Colors.grey)),
+                            obscureText: controller.signUpObscuretext.value),
+                      ),
+                      Gap(40.h),
                       CustomButton(
                           height: 55.h,
                           width: w,
@@ -134,4 +108,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ])
                     ])))));
   }
+}
+
+class FormFieldController extends GetxController {
+  var emailController = TextEditingController();
+  var nameController = TextEditingController();
+  var userController = TextEditingController();
+  var passwordController = TextEditingController();
+
+  String password = '';
+
+  bool rememberMe = false;
+  Rx<bool> obscureText = true.obs;
 }

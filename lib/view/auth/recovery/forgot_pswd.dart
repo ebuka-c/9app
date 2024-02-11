@@ -44,7 +44,7 @@ class ForgotPSWD extends StatelessWidget {
                           child: Center(
                               child: Image.asset('assets/images/logo.png',
                                   scale: 1.4))),
-                      Gap(30.h),
+                      Gap(50.h),
                       Text(
                           'Select which contact details should we use to reset your password',
                           textAlign: TextAlign.center,
@@ -52,29 +52,25 @@ class ForgotPSWD extends StatelessWidget {
                               fontFamily: 'roboto',
                               fontWeight: FontWeight.w500,
                               fontSize: 15.5.sp)),
-                      Gap(15.h),
                       GestureDetector(
-                        child: const RecoveryVia(
-                            imageIcon: 'assets/images/viasms.png',
-                            info: '+2349081334499',
-                            via: 'via SMS'),
-                      ),
+                          child: const RecoveryVia(
+                              imageIcon: 'assets/images/viasms.png',
+                              info: '+2349081334499',
+                              via: 'via SMS')),
                       GestureDetector(
-                        child: const RecoveryVia(
-                            imageIcon: 'assets/images/viaemail.png',
-                            info: 'chinaza@gmail.com',
-                            via: 'via Email'),
-                      ),
-                      Gap(75.h),
+                          child: const RecoveryVia(
+                              imageIcon: 'assets/images/viaemail.png',
+                              info: 'chinaza@gmail.com',
+                              via: 'via Email')),
+                      Gap(70.h),
                       GestureDetector(
-                        onTap: () => Get.offAllNamed(AppRoutes.otpverify),
-                        child: CustomButton(
-                            height: 55.h,
-                            width: w * w,
-                            color: AppColors.primaryColor,
-                            text: 'Continue',
-                            circularRadius: 50),
-                      )
+                          onTap: () => Get.toNamed(AppRoutes.otpverify),
+                          child: CustomButton(
+                              height: 55.h,
+                              width: w * w,
+                              color: AppColors.primaryColor,
+                              text: 'Continue',
+                              circularRadius: 50))
                     ])))));
   }
 }

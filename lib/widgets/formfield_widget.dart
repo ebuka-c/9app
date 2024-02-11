@@ -24,7 +24,7 @@ class FormFieldWidget extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.only(bottom: 20.h),
       child: TextFormField(
         controller: controllerType,
         onTapOutside: (PointerDownEvent event) {

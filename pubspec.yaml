@@ -41,6 +41,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   unicons: ^2.1.1
   iconsax: ^0.0.8
+  local_auth: ^2.1.8
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
