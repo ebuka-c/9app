@@ -9,8 +9,13 @@ class RecoveryVia extends StatelessWidget {
       {super.key,
       required this.imageIcon,
       required this.info,
-      required this.via});
+      required this.via,
+      this.backgroundColor,
+      this.textColor,
+      this.opacityColor,
+      this.borderColor});
   final String imageIcon, info, via;
+  final Color? backgroundColor, textColor, opacityColor, borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,9 @@ class RecoveryVia extends StatelessWidget {
         width: w * 0.9,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(width: 3, color: Colors.grey.withOpacity(0.5))),
+            color: backgroundColor,
+            border: Border.all(
+                width: 1, color: borderColor ?? Colors.grey.withOpacity(0.5))),
         child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -36,17 +43,18 @@ class RecoveryVia extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(via,
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontFamily: 'roboto',
-                            color: AppColors.secondaryText,
+                            color: opacityColor ?? AppColors.secondaryText,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: h * 0.005),
                     SizedBox(
                         width: w * 0.58,
                         child: Text(info, // Your number,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontFamily: 'roboto',
+                                color: textColor,
                                 fontWeight: FontWeight.w600)))
                   ])
             ]));

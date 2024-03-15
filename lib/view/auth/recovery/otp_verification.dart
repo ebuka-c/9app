@@ -9,7 +9,9 @@ import '../../../values/colors.dart';
 import '../../../widgets/custom_button.dart';
 
 class OTPVerification extends StatelessWidget {
-  const OTPVerification({super.key});
+  OTPVerification({super.key});
+  final _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String countdown = '26';
@@ -56,6 +58,7 @@ class OTPVerification extends StatelessWidget {
                       PinCodeTextField(
                           keyboardType: TextInputType.number,
                           appContext: context,
+                          controller: _controller,
                           length: 4,
                           onCompleted: (value) {},
                           blinkWhenObscuring: true,

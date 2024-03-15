@@ -101,18 +101,44 @@ class LoginScreen extends GetView<AuthController> {
                           ]),
                       Gap(30.h),
                       GestureDetector(
+                          onTap: () => showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (ctx) => SimpleDialog(
+                                  contentPadding: EdgeInsets.zero,
+                                  surfaceTintColor: Colors.white,
+                                  title: Column(children: [
+                                    Image.asset('assets/images/print.png'),
+                                    Gap(20.h),
+                                    Text("Touch the fingerprint sensor",
+                                        style: TextStyle(
+                                            fontFamily: 'roboto',
+                                            color: AppColors.greyText,
+                                            fontSize: 14.sp)),
+                                    Gap(70.h),
+                                    TextButton(
+                                        onPressed: () => Get.back(),
+                                        child: Text("Cancel",
+                                            style: TextStyle(
+                                                fontFamily: 'roboto',
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 16.sp)))
+                                  ]))),
                           child: Text('Login with Biometric',
                               style: TextStyle(
                                   fontFamily: 'roboto',
                                   color: AppColors.primaryColor,
                                   fontSize: 18.sp))),
                       Gap(30.h),
-                      CustomButton(
-                          height: 55.h,
-                          width: w * 0.85.w,
-                          color: AppColors.primaryColor,
-                          text: 'Login',
-                          circularRadius: 50),
+                      GestureDetector(
+                        onTap: () => Get.toNamed(AppRoutes.dashboard),
+                        child: CustomButton(
+                            height: 55.h,
+                            width: w * 0.85.w,
+                            color: AppColors.primaryColor,
+                            text: 'Login',
+                            circularRadius: 50)
+                      ),
                       Gap(15.h),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +146,7 @@ class LoginScreen extends GetView<AuthController> {
                             Text(
                               'Don\'t have an account?  ',
                               style: TextStyle(
-                                  fontFamily: 'roboto', fontSize: 15.sp),
+                                  fontFamily: 'roboto', fontSize: 15.sp)
                             ),
                             GestureDetector(
                                 onTap: () => Get.toNamed(AppRoutes.signup),

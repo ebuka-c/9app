@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../routes/names.dart';
+import '../widgets/logo_display.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -32,22 +32,8 @@ class _SplashScreenState extends State<Splash>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-          child: Container(
-              height: 150.h,
-              width: 130.w,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        spreadRadius: 0,
-                        blurRadius: 5,
-                        offset: const Offset(0, 8))
-                  ]),
-              child: Center(child: Image.asset('assets/images/logo.png')))),
+    return const Scaffold(
+      body: Center(child: LogoDisplay()),
     );
   }
 }

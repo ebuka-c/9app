@@ -43,6 +43,8 @@ dependencies:
   iconsax: ^0.0.8
   local_auth: ^2.1.8
   shared_preferences: ^2.2.2
+  badges: ^3.1.2
+  syncfusion_flutter_charts: ^24.2.9
 
 dev_dependencies:
   flutter_test:

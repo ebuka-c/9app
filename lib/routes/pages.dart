@@ -2,11 +2,12 @@ import 'package:_9app/view/auth/recovery/forgot_pswd.dart';
 import 'package:_9app/view/auth/recovery/new_password.dart';
 import 'package:_9app/view/auth/recovery/otp_verification.dart';
 import 'package:_9app/view/auth/signup.dart';
-import 'package:_9app/view/main_screens/dashboard.dart';
 import 'package:_9app/view/onboarding/onboarding.dart';
 import 'package:_9app/view/splash_screen.dart';
+import 'package:_9app/widgets/nav_bar/homenav.dart';
 import 'package:get/get.dart';
 import '../view/auth/login.dart';
+import '../view/nav_screens.dart/dashboard.dart';
 import 'names.dart';
 
 class AppPages {
@@ -18,6 +19,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.onboarding,
       page: () => const OnboardingScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.homeNav,
+      page: () => const HomeNav(),
     ),
     GetPage(
         name: AppRoutes.signup,
@@ -33,7 +38,7 @@ class AppPages {
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.otpverify,
-        page: () => const OTPVerification(),
+        page: () => OTPVerification(),
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.createNewPSWD,
@@ -41,7 +46,7 @@ class AppPages {
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.dashboard,
-        page: () => const Dashboard(),
+        page: () => Dashboard(),
         transition: Transition.rightToLeft),
   ];
 }

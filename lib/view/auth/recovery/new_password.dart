@@ -95,7 +95,7 @@ class NewPswd extends GetView<AuthController> {
                           ),
                           Gap(40.h),
                           GestureDetector(
-                            onTap: () => Get.toNamed(AppRoutes.dashboard),
+                            onTap: () => Get.offAllNamed(AppRoutes.login),
                             child: CustomButton(
                                 height: 55.h,
                                 width: w,

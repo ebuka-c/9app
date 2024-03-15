@@ -109,15 +109,3 @@ class SignUpScreen extends GetView<AuthController> {
                     ])))));
   }
 }
-
-class FormFieldController extends GetxController {
-  var emailController = TextEditingController();
-  var nameController = TextEditingController();
-  var userController = TextEditingController();
-  var passwordController = TextEditingController();
-
-  String password = '';
-
-  bool rememberMe = false;
-  Rx<bool> obscureText = true.obs;
-}

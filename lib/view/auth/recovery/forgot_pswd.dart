@@ -8,9 +8,28 @@ import '../../../values/colors.dart';
 import '../../../widgets/custom_button.dart';
 import '../../../widgets/recoveryVia.dart';
 
-class ForgotPSWD extends StatelessWidget {
+class ForgotPSWD extends StatefulWidget {
   const ForgotPSWD({super.key});
 
+  @override
+  State<ForgotPSWD> createState() => _ForgotPSWDState();
+}
+
+class _ForgotPSWDState extends State<ForgotPSWD> {
+  int isSelected = -1;
+
+  List recoverVia = [
+    {
+      'imageIcon': 'assets/images/viasms.png',
+      'info': '+2349081334499',
+      'via': 'via SMS',
+    },
+    {
+      'imageIcon': 'assets/images/viaemail.png',
+      'info': 'sky@gmail.com',
+      'via': 'via Email',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -46,29 +65,52 @@ class ForgotPSWD extends StatelessWidget {
                                   scale: 1.4))),
                       Gap(50.h),
                       Text(
-                          'Select which contact details should we use to reset your password',
+                          'Select which contact details should we use \nto reset your password',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontFamily: 'roboto',
                               fontWeight: FontWeight.w500,
                               fontSize: 15.5.sp)),
-                      GestureDetector(
-                          child: const RecoveryVia(
-                              imageIcon: 'assets/images/viasms.png',
-                              info: '+2349081334499',
-                              via: 'via SMS')),
-                      GestureDetector(
-                          child: const RecoveryVia(
-                              imageIcon: 'assets/images/viaemail.png',
-                              info: 'chinaza@gmail.com',
-                              via: 'via Email')),
+                      SizedBox(
+                          height: 300,
+                          child: ListView.builder(
+                              itemBuilder: (context, index) => GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isSelected = index;
+                                      });
+                                    },
+                                    child: RecoveryVia(
+                                        backgroundColor: isSelected == index
+                                            ? AppColors.opacityBlack
+                                                .withOpacity(0.8)
+                                            : null,
+                                        textColor: isSelected == index
+                                            ? Colors.white
+                                            : null,
+                                        opacityColor: isSelected == index
+                                            ? Colors.white70
+                                            : null,
+                                        imageIcon: recoverVia[index]
+                                            ['imageIcon'],
+                                        borderColor: isSelected == index
+                                            ? AppColors.primaryColor
+                                            : Colors.grey.withOpacity(0.5),
+                                        info: recoverVia[index]['info'],
+                                        via: recoverVia[index]['via']),
+                                  ),
+                              itemCount: recoverVia.length)),
                       Gap(70.h),
                       GestureDetector(
-                          onTap: () => Get.toNamed(AppRoutes.otpverify),
+                          onTap: () => isSelected != -1
+                              ? Get.toNamed(AppRoutes.otpverify)
+                              : null,
                           child: CustomButton(
                               height: 55.h,
                               width: w * w,
-                              color: AppColors.primaryColor,
+                              color: isSelected != -1
+                                  ? AppColors.primaryColor
+                                  : AppColors.primaryColor.withOpacity(0.6),
                               text: 'Continue',
                               circularRadius: 50))
                     ])))));
