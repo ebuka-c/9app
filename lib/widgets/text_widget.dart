@@ -9,17 +9,23 @@ class TextWidget extends StatelessWidget {
     this.textColor,
     this.fontWeight,
     this.fontSize,
+    this.textAlign,
+    this.textDirection,
   });
   final String text;
   final String? fontFamily;
   final Color? textColor;
   final FontWeight? fontWeight;
   final double? fontSize;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
 
   @override
   Widget build(BuildContext context) {
     return Text(text,
-        textAlign: TextAlign.start,
+        textAlign: textAlign ?? TextAlign.start,
+        textDirection: textDirection,
+        overflow: TextOverflow.ellipsis,
         style: TextStyle(
             fontFamily: fontFamily ?? 'roboto',
             color: textColor ?? Colors.black,

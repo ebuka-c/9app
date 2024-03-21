@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../values/colors.dart';
+import '../../../values/colors.dart';
 
 class CoinsTab extends StatelessWidget {
   const CoinsTab({
@@ -39,7 +39,7 @@ class CoinsTab extends StatelessWidget {
                             color: AppColors.opacityBlack,
                             fontSize: 14.sp))
                   ])),
-          Container(
+          SizedBox(
             height: 50,
             width: 150.w,
           ),

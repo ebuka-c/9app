@@ -7,19 +7,17 @@ import 'package:gap/gap.dart';
 class DashboardCard extends StatelessWidget {
   const DashboardCard({
     super.key,
-    required this.surfaceTint,
     this.widgetIcon,
-    this.containerColor,
+    required this.cardColor,
   });
 
-  final Color surfaceTint;
   final Widget? widgetIcon;
-  final Color? containerColor;
+  final Color cardColor;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        surfaceTintColor: surfaceTint,
+        surfaceTintColor: cardColor,
         elevation: 3.sp,
         color: Colors.white,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -37,7 +35,7 @@ class DashboardCard extends StatelessWidget {
                                   width: 45.sp,
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: containerColor),
+                                      color: cardColor),
                                   child: Container()),
                           const Gap(5),
                           Gap(7.w),
