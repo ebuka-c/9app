@@ -28,95 +28,95 @@ class _KYCState extends State<KYC> {
     return Scaffold(
         appBar: AppBar(title: TextWidget(text: 'KYC', fontSize: 23.sp)),
         body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 18.w),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            TextWidget(
-                text: ' KYC Verification',
-                textAlign: TextAlign.start,
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w400,
-                textColor: AppColors.primaryColor),
-            Gap(10.h),
-            KYCWidget(
-                w: w,
-                text: 'Email Verification',
-                indicatorImage: 'assets/icons/done.png',
-                onTap: () => Get.toNamed(AppRoutes.kycVerifyEmail),
-                hasPrefix: false),
-            Gap(15.h),
-            KYCWidget(
-                w: w,
-                text: 'Phone Number Verification',
-                indicatorImage: 'assets/icons/done.png',
-                hasPrefix: false),
-            Gap(15.h),
-            KYCWidget(
-                w: w,
-                text: 'Finger Print Recognition',
-                indicatorImage: 'assets/icons/undone.png',
-                hasPrefix: false),
-            Gap(15.h),
-            KYCWidget(
-                w: w,
-                text: 'Face Recognition',
-                indicatorImage: 'assets/icons/undone.png',
-                hasPrefix: false),
+            padding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 18.w),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              TextWidget(
+                  text: ' KYC Verification',
+                  textAlign: TextAlign.start,
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.w400,
+                  textColor: AppColors.primaryColor),
+              Gap(10.h),
+              KYCWidget(
+                  w: w,
+                  text: 'Email Verification',
+                  indicatorImage: 'assets/icons/done.png',
+                  onTap: () => Get.toNamed(AppRoutes.kycVerifyEmail),
+                  hasPrefix: false),
+              Gap(15.h),
+              KYCWidget(
+                  w: w,
+                  text: 'Phone Number Verification',
+                  indicatorImage: 'assets/icons/done.png',
+                  hasPrefix: false),
+              Gap(15.h),
+              KYCWidget(
+                  w: w,
+                  text: 'Finger Print Recognition',
+                  indicatorImage: 'assets/icons/undone.png',
+                  onTap: () => Get.toNamed(''),
+                  hasPrefix: false),
+              Gap(15.h),
+              KYCWidget(
+                  w: w,
+                  text: 'Face Recognition',
+                  indicatorImage: 'assets/icons/undone.png',
+                  hasPrefix: false),
 
-            //Select a valid Government-issued document
-            Gap(30.h),
-            TextWidget(
-                text: ' Select a valid Government-issued document',
-                textAlign: TextAlign.start,
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w400,
-                textColor: AppColors.primaryColor),
-            Gap(10.h),
+              //Select a valid Government-issued document
+              Gap(30.h),
+              TextWidget(
+                  text: ' Select a valid Government-issued document',
+                  textAlign: TextAlign.start,
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.w400,
+                  textColor: AppColors.primaryColor),
+              Gap(10.h),
 
-            SizedBox(
-              height: 200.h,
-              child: ListView.separated(
-                  itemBuilder: (context, i) => GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = i;
-                          });
-                        },
-                        child: KYCWidget(
-                            w: w,
-                            text: _idMode[i]['id_mode'],
-                            indicatorImage: 'assets/icons/undone.png',
-                            borderColor: selectedIndex == i
-                                ? AppColors.primaryColor
-                                : AppColors.grey,
-                            borderWidth: selectedIndex == i ? 3 : 1,
-                            hasPrefix: true),
-                      ),
-                  separatorBuilder: (context, i) => Gap(15.h),
-                  itemCount: _idMode.length),
-            ),
-            const Row(children: [
-              Expanded(
-                  child: Text(
-                      'This information is used for identity verification only, and will be kept secure by 9App',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontFamily: 'roboto')))
-            ]),
-            Gap(30.h),
-            TransactionButton(
-                w: w,
-                text: 'Continue',
-                onTap: () {
-                  if (selectedIndex == 0) {
-                    Get.toNamed(AppRoutes.idUpload);
-                  } else if (selectedIndex == 1) {
-                    Get.to(const PassportVerification());
-                  } else {
-                    Get.to(const DriversLicenseVerification());
-                  }
-                })
-          ]),
-        ));
+              SizedBox(
+                height: 200.h,
+                child: ListView.separated(
+                    itemBuilder: (context, i) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = i;
+                            });
+                          },
+                          child: KYCWidget(
+                              w: w,
+                              text: _idMode[i]['id_mode'],
+                              indicatorImage: 'assets/icons/undone.png',
+                              borderColor: selectedIndex == i
+                                  ? AppColors.primaryColor
+                                  : AppColors.grey,
+                              borderWidth: selectedIndex == i ? 3 : 1,
+                              hasPrefix: true),
+                        ),
+                    separatorBuilder: (context, i) => Gap(15.h),
+                    itemCount: _idMode.length),
+              ),
+              const Row(children: [
+                Expanded(
+                    child: Text(
+                        'This information is used for identity verification only, and will be kept secure by 9App',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontFamily: 'roboto')))
+              ]),
+              Gap(30.h),
+              TransactionButton(
+                  w: w,
+                  text: 'Continue',
+                  onTap: () {
+                    if (selectedIndex == 0) {
+                      Get.toNamed(AppRoutes.idUpload);
+                    } else if (selectedIndex == 1) {
+                      Get.to(const PassportVerification());
+                    } else {
+                      Get.to(const DriversLicenseVerification());
+                    }
+                  })
+            ])));
   }
 }
 

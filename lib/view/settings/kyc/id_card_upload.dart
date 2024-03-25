@@ -1,10 +1,10 @@
-import 'package:_9app/values/colors.dart';
 import 'package:_9app/widgets/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
 import '../../../widgets/text_widget.dart';
+import '../../../widgets/verification_widgets/img_upload.dart';
 
 class IDUpload extends StatelessWidget {
   const IDUpload({super.key});
@@ -34,40 +34,6 @@ class IDUpload extends StatelessWidget {
               TransactionButton(w: w, text: 'Continue', onTap: () {})
             ])),
       ),
-    );
-  }
-}
-
-class ImageUpload extends StatelessWidget {
-  const ImageUpload({
-    super.key,
-    required this.w,
-    required this.text,
-  });
-
-  final double w;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 160.h,
-      width: w,
-      decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 238, 235, 235),
-          borderRadius: BorderRadius.circular(10)),
-      child: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.camera_alt_outlined,
-              color: AppColors.opacityGrey.withOpacity(0.8)),
-          TextWidget(
-              text: text,
-              fontSize: 14.sp,
-              textColor: AppColors.opacityGrey.withOpacity(0.8)),
-        ],
-      )),
     );
   }
 }

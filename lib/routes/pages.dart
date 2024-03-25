@@ -3,7 +3,7 @@ import 'package:_9app/view/auth/recovery/new_password.dart';
 import 'package:_9app/view/auth/recovery/otp_verification.dart';
 import 'package:_9app/view/auth/signup.dart';
 import 'package:_9app/view/onboarding/onboarding.dart';
-import 'package:_9app/view/settings/kyc/image_upload.dart';
+import 'package:_9app/view/settings/kyc/id_card_upload.dart';
 import 'package:_9app/view/settings/kyc/kyc_otp.dart';
 import 'package:_9app/view/settings/kyc/verified_screen.dart';
 import 'package:_9app/view/settings/profile.dart';
