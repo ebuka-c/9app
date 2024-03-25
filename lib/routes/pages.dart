@@ -74,9 +74,9 @@ class AppPages {
         page: () => const WithdrawalDeposit()),
     GetPage(name: AppRoutes.profileScreen, page: () => ProfileScreen()),
     GetPage(name: AppRoutes.kyc, page: () => const KYC()),
-    GetPage(name: AppRoutes.kycVerify, page: () => KYCVerify()),
+    GetPage(name: AppRoutes.kycVerifyEmail, page: () => KYCVerify()),
     GetPage(name: AppRoutes.kycOtp, page: () => KycOTP()),
-    GetPage(name: AppRoutes.kycVerified, page: () => KycVerified()),
-    GetPage(name: AppRoutes.imgUpload, page: () => ImgUpload()),
+    GetPage(name: AppRoutes.kycVerified, page: () => const KycVerified()),
+    GetPage(name: AppRoutes.idUpload, page: () => const IDUpload()),
   ];
 }

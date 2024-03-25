@@ -12,33 +12,38 @@ class KYCWidget extends StatelessWidget {
       required this.indicatorImage,
       required this.hasPrefix,
       this.borderWidth,
-      this.borderColor});
+      this.borderColor,
+      this.onTap});
 
   final double? w, borderWidth;
   final String text, indicatorImage;
   final bool hasPrefix;
   final Color? borderColor;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return !hasPrefix
-        ? Container(
-            width: w,
-            height: 50.h,
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            decoration: BoxDecoration(
-                border: Border.all(color: AppColors.grey),
-                borderRadius: BorderRadius.circular(8)),
-            child: Center(
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextWidget(
-                    text: text, fontSize: 17.sp, fontWeight: FontWeight.w400),
-                Image.asset(indicatorImage)
-              ],
-            )),
+        ? GestureDetector(
+            onTap: onTap,
+            child: Container(
+              width: w,
+              height: 50.h,
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.grey),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Center(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextWidget(
+                      text: text, fontSize: 17.sp, fontWeight: FontWeight.w400),
+                  Image.asset(indicatorImage)
+                ],
+              )),
+            ),
           )
         : Container(
             width: w,

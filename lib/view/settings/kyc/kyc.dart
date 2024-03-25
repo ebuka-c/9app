@@ -1,5 +1,7 @@
 import 'package:_9app/routes/names.dart';
 import 'package:_9app/values/colors.dart';
+import 'package:_9app/view/settings/verification/license_verify.dart';
+import 'package:_9app/view/settings/verification/passportVerify.dart';
 import 'package:_9app/widgets/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,6 +42,7 @@ class _KYCState extends State<KYC> {
                 w: w,
                 text: 'Email Verification',
                 indicatorImage: 'assets/icons/done.png',
+                onTap: () => Get.toNamed(AppRoutes.kycVerifyEmail),
                 hasPrefix: false),
             Gap(15.h),
             KYCWidget(
@@ -56,7 +59,7 @@ class _KYCState extends State<KYC> {
             Gap(15.h),
             KYCWidget(
                 w: w,
-                text: 'Finger Print Recognition',
+                text: 'Face Recognition',
                 indicatorImage: 'assets/icons/undone.png',
                 hasPrefix: false),
 
@@ -103,7 +106,15 @@ class _KYCState extends State<KYC> {
             TransactionButton(
                 w: w,
                 text: 'Continue',
-                onTap: () => Get.toNamed(AppRoutes.kycVerify))
+                onTap: () {
+                  if (selectedIndex == 0) {
+                    Get.toNamed(AppRoutes.idUpload);
+                  } else if (selectedIndex == 1) {
+                    Get.to(const PassportVerification());
+                  } else {
+                    Get.to(const DriversLicenseVerification());
+                  }
+                })
           ]),
         ));
   }

@@ -19,6 +19,6 @@ class KycVerified extends StatelessWidget {
             w: w,
             subtitle: 'Congratulations! your ID Card\nhas been verified',
             title: 'You\'re Verified',
-            onTap: () => Get.toNamed(AppRoutes.imgUpload)));
+            onTap: () => Get.toNamed('AppRoutes.imgUpload')));
   }
 }

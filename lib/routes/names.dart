@@ -21,8 +21,8 @@ class AppRoutes {
   static const withdrawalDeposit = '/withdrawalDeposit';
   static const profileScreen = '/profile';
   static const kyc = '/kyc';
-  static const kycVerify = '/kycVerify';
+  static const kycVerifyEmail = '/kycVerifyEmail';
   static const kycOtp = '/kycOtp';
   static const kycVerified = '/kycVerified';
-  static const imgUpload = '/imgUpload';
+  static const idUpload = '/idUpload';
 }
