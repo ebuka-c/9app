@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:_9app/values/data.dart';
 import 'package:_9app/widgets/dashboard_card.dart';
 import 'package:_9app/widgets/logo_display.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class _DashboardState extends State<Dashboard>
                   backgroundColor: AppColors.primaryColor,
                   child: GestureDetector(
                       onTap: () {}, child: const Icon(Iconsax.notification))),
-              SizedBox(width: 15.w),
+              SizedBox(width: 25.w),
               const CircleAvatar(),
               SizedBox(width: 15.w)
             ]),
@@ -153,13 +154,16 @@ List<Widget> _tabsBody = [
   ListView.builder(
       key: const PageStorageKey('tabOne'),
       itemBuilder: (context, i) {
-        return const CoinsTab(
-            name: 'Bitcoin\n',
-            abbr: 'BTC',
+        return CoinsTab(
+            name: '${coinsTab[i]['coin']}\n',
+            abbr: coinsTab[i]['abbr'],
             rate: '99,284.01',
-            percentage: '+66.3%');
+            percentage: coinsTab[i]['percent'],
+            percentageColor: coinsTab[i]['percent'].startsWith('+')
+                ? AppColors.green
+                : Colors.red);
       },
-      itemCount: 8),
+      itemCount: coinsTab.length),
 
   //Exchange Rates
   const TableWidget(

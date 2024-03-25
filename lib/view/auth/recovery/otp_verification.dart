@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
-
 import '../../../routes/names.dart';
 import '../../../values/colors.dart';
-import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_buttons.dart';
+import '../../../widgets/pin_code_widget/pin_code_widget.dart';
 
 class OTPVerification extends StatelessWidget {
   OTPVerification({super.key});
@@ -55,25 +54,7 @@ class OTPVerification extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               fontSize: 16.5.sp)),
                       Gap(30.h),
-                      PinCodeTextField(
-                          keyboardType: TextInputType.number,
-                          appContext: context,
-                          controller: _controller,
-                          length: 4,
-                          onCompleted: (value) {},
-                          blinkWhenObscuring: true,
-                          animationType: AnimationType.fade,
-                          pinTheme: PinTheme(
-                              activeFillColor: AppColors.primaryColor,
-                              fieldWidth: w * 0.17,
-                              selectedFillColor: AppColors.fillColor,
-                              inactiveFillColor: Colors.grey,
-                              shape: PinCodeFieldShape.box,
-                              borderRadius: BorderRadius.circular(15),
-                              fieldHeight: 50,
-                              inactiveColor: Colors.grey,
-                              activeColor: AppColors.primaryColor,
-                              selectedColor: Colors.brown)),
+                      PinCodeField(controller: _controller, w: w),
                       Gap(50.h),
                       Text('Resend Code in $countdown s',
                           textAlign: TextAlign.center,

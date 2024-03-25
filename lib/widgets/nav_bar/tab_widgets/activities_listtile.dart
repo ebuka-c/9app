@@ -15,7 +15,7 @@ class ActivitiesListTile extends StatelessWidget {
         itemBuilder: (context, i) => ListTile(
             isThreeLine: true,
             leading: CircleAvatar(
-                radius: 20.sp, child: Image.asset('assets/icons/crypto.png')),
+                radius: 20.sp, child: Image.asset('assets/icons/btc.png')),
             title: TextWidget(
                 text: activities[i]['title'],
                 fontWeight: FontWeight.w500,

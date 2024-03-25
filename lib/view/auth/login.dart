@@ -1,6 +1,6 @@
 import 'package:_9app/routes/names.dart';
 import 'package:_9app/values/colors.dart';
-import 'package:_9app/widgets/custom_button.dart';
+import 'package:_9app/widgets/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../controllers/auth_controller.dart';
-import '../../widgets/formfield_widget.dart';
+import '../../widgets/textfields/formfield_widget.dart';
 
 class LoginScreen extends GetView<AuthController> {
   const LoginScreen({super.key});
@@ -131,23 +131,20 @@ class LoginScreen extends GetView<AuthController> {
                                   fontSize: 18.sp))),
                       Gap(30.h),
                       GestureDetector(
-                        onTap: () => Get.toNamed(AppRoutes.dashboard),
-                        child: CustomButton(
-                            height: 55.h,
-                            width: w * 0.85.w,
-                            color: AppColors.primaryColor,
-                            text: 'Login',
-                            circularRadius: 50)
-                      ),
+                          onTap: () => Get.toNamed(AppRoutes.homeNav),
+                          child: CustomButton(
+                              height: 55.h,
+                              width: w * 0.85.w,
+                              color: AppColors.primaryColor,
+                              text: 'Login',
+                              circularRadius: 50)),
                       Gap(15.h),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'Don\'t have an account?  ',
-                              style: TextStyle(
-                                  fontFamily: 'roboto', fontSize: 15.sp)
-                            ),
+                            Text('Don\'t have an account?  ',
+                                style: TextStyle(
+                                    fontFamily: 'roboto', fontSize: 15.sp)),
                             GestureDetector(
                                 onTap: () => Get.toNamed(AppRoutes.signup),
                                 child: Text('Sign up',

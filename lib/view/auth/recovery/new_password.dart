@@ -7,8 +7,8 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../controllers/auth_controller.dart';
 import '../../../values/colors.dart';
-import '../../../widgets/custom_button.dart';
-import '../../../widgets/formfield_widget.dart';
+import '../../../widgets/custom_buttons.dart';
+import '../../../widgets/textfields/formfield_widget.dart';
 
 class NewPswd extends GetView<AuthController> {
   const NewPswd({super.key});
@@ -95,14 +95,13 @@ class NewPswd extends GetView<AuthController> {
                           ),
                           Gap(40.h),
                           GestureDetector(
-                            onTap: () => Get.offAllNamed(AppRoutes.login),
-                            child: CustomButton(
-                                height: 55.h,
-                                width: w,
-                                color: AppColors.primaryColor,
-                                text: 'Continue',
-                                circularRadius: 50),
-                          )
+                              onTap: () => Get.offAllNamed(AppRoutes.login),
+                              child: CustomButton(
+                                  height: 55.h,
+                                  width: w,
+                                  color: AppColors.primaryColor,
+                                  text: 'Continue',
+                                  circularRadius: 50))
                         ]))))));
   }
 }

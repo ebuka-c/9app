@@ -1,14 +1,14 @@
 import 'package:_9app/controllers/auth_controller.dart';
 import 'package:_9app/routes/names.dart';
 import 'package:_9app/values/colors.dart';
-import 'package:_9app/widgets/custom_button.dart';
+import 'package:_9app/widgets/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../widgets/formfield_widget.dart';
+import '../../widgets/textfields/formfield_widget.dart';
 
 class SignUpScreen extends GetView<AuthController> {
   const SignUpScreen({super.key});

@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../../../values/colors.dart';
-import '../../../widgets/custom_button.dart';
+import '../../../widgets/custom_buttons.dart';
 import '../../../widgets/recoveryVia.dart';
 
 class ForgotPSWD extends StatefulWidget {

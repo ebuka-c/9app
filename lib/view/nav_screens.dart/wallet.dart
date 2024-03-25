@@ -1,3 +1,4 @@
+import 'package:_9app/widgets/charts/radial_chart.dart';
 import 'package:_9app/widgets/logo_display.dart';
 import 'package:_9app/widgets/nav_bar/wallet_widgets.dart/btc_listview.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class _WalletState extends State<Wallet> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.background,
         appBar: AppBar(
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
@@ -43,7 +45,7 @@ class _WalletState extends State<Wallet> with SingleTickerProviderStateMixin {
                   backgroundColor: AppColors.primaryColor,
                   child: GestureDetector(
                       onTap: () {}, child: const Icon(Iconsax.notification))),
-              SizedBox(width: 15.w),
+              SizedBox(width: 25.w),
               const CircleAvatar(),
               SizedBox(width: 15.w)
             ]),
@@ -54,7 +56,10 @@ class _WalletState extends State<Wallet> with SingleTickerProviderStateMixin {
             child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.w),
                 child: Column(children: [
-                  Container(height: 300.h, color: Colors.amber),
+                  Container(
+                      height: 300.h,
+                      child: SizedBox(
+                          height: 270.sp, width: 270.sp, child: RadialChart())),
                   TabBar(
                       indicatorColor: AppColors.primaryColor,
                       labelColor: AppColors.primaryColor,
@@ -147,23 +152,13 @@ List<Widget> _tabs = [
 
 List<Widget> _tabsBody = [
   //Coins
-  const CircleAvatar(
-    key: PageStorageKey('walletOne'),
-  ),
-  const BtcListview(
-    key: PageStorageKey('walletTwo'),
-  ),
-  const CircleAvatar(
-    key: PageStorageKey('walletThree'),
-  ),
+  const CircleAvatar(key: PageStorageKey('walletOne')),
+  const BtcListview(key: PageStorageKey('walletTwo')),
+  Container(key: const PageStorageKey('walletThree')),
 
   //Exchange Rates
-  const CircleAvatar(
-    key: PageStorageKey('walletFour'),
-  ),
+  Container(key: const PageStorageKey('walletFour')),
 
   //Activities
-  const CircleAvatar(
-    key: PageStorageKey('walletFive'),
-  ),
+  Container(key: const PageStorageKey('walletFive')),
 ];

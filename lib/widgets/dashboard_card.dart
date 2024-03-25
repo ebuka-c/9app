@@ -57,7 +57,7 @@ class DashboardCard extends StatelessWidget {
                                             fontSize: 16.sp))
                                   ])),
                         ]),
-                    Container(height: 65.h, width: 100),
+                    SizedBox(height: 65.h, width: 100),
                     Gap(5.h),
                     Row(children: [
                       TextWidget(

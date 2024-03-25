@@ -12,4 +12,17 @@ class AppRoutes {
   static const homeNav = '/homeNav';
   static const chatList = '/chatList';
   static const dashboard = '/dashboard';
+  static const swap = '/swap';
+  static const confirmSwap = '/confirmSwap';
+  static const enterPinSwap = '/enterPinSwap';
+  static const selectCurrency = '/selectCurrency';
+  static const depositCurrency = '/depositCurrency';
+  static const transferDeposit = '/transferDeposit';
+  static const withdrawalDeposit = '/withdrawalDeposit';
+  static const profileScreen = '/profile';
+  static const kyc = '/kyc';
+  static const kycVerify = '/kycVerify';
+  static const kycOtp = '/kycOtp';
+  static const kycVerified = '/kycVerified';
+  static const imgUpload = '/imgUpload';
 }

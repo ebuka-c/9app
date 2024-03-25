@@ -1,3 +1,4 @@
+import 'package:_9app/routes/names.dart';
 import 'package:_9app/values/colors.dart';
 import 'package:_9app/view/nav_screens.dart/coin_to_naira.dart';
 import 'package:_9app/view/nav_screens.dart/dashboard.dart';
@@ -34,7 +35,8 @@ class HomeNav extends StatelessWidget {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                     TransactionButtons(
-                                        onPressed: () {},
+                                        onPressed: () => Get.toNamed(
+                                            AppRoutes.selectCurrency),
                                         color: AppColors.primaryColor,
                                         text: 'Deposit',
                                         shadowColor: AppColors.primaryColor),
@@ -44,7 +46,8 @@ class HomeNav extends StatelessWidget {
                                         text: 'Withdraw',
                                         shadowColor: AppColors.yellowButton),
                                     TransactionButtons(
-                                        onPressed: () {},
+                                        onPressed: () =>
+                                            Get.toNamed(AppRoutes.swap),
                                         color: AppColors.maroon,
                                         text: 'Swap',
                                         shadowColor: AppColors.maroon)

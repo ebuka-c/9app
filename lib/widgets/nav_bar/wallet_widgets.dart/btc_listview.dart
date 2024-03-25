@@ -17,8 +17,7 @@ class BtcListview extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CircleAvatar(
-                      radius: 20,
-                      child: Image.asset('assets/icons/crypto.png')),
+                      radius: 20, child: Image.asset('assets/icons/btc.png')),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

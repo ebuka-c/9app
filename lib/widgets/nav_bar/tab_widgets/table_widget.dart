@@ -75,7 +75,7 @@ class TableWidget extends StatelessWidget {
                                             CircleAvatar(
                                                 radius: 15,
                                                 child: Image.asset(
-                                                    'assets/icons/crypto.png')),
+                                                    'assets/icons/btc.png')),
                                             Gap(w * 0.014.w),
                                             SizedBox(
                                                 width: w * 0.152.w,
